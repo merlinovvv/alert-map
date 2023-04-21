@@ -1,0 +1,14 @@
+.main{
+    padding: 0px 0px 40px;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 1000px) {
+    .content{
+        flex-direction: column;
+    }
+}

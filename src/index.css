@@ -5,9 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(circle, #120000 0%, #000000 100%);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.btn_getData{
+  margin: 0 auto;
+  max-width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #f1f1f1;
+  background-color: rgba(255,0,0,0.5);
+  cursor: pointer;
 }
