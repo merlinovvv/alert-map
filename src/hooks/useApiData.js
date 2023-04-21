@@ -11,7 +11,7 @@ export default function useApiData() {
       try {
         const response = await axios.get('https://alerts.com.ua/api/states', {
           headers: {
-            'X-API-Key': process.env.REACT_APP_APIKEY,
+            'X-API-Key': 'e9cb5f274f9620b9dd5e5ce5807f59c5670e8af6',
           },
         });
         setStates(response.data.states);
