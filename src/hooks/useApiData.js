@@ -11,6 +11,7 @@ export default function useApiData() {
       process.env.REACT_APP_API_URL || 'https://alerts.in.ua/api/states';
     const wsUrl =
       process.env.REACT_APP_WS_URL || 'wss://alerts.in.ua/socket/alerts';
+    const apiKey = process.env.REACT_APP_APIKEY;
 
     let ws;
 
@@ -18,14 +19,15 @@ export default function useApiData() {
       try {
         const response = await axios.get(apiUrl, {
           headers: {
-            'X-API-Key': process.env.REACT_APP_APIKEY,
+            Accept: 'application/json',
+            ...(apiKey ? { 'X-API-Key': apiKey } : {}),
           },
         });
         setStates(response.data.states);
         setLastUpdate(response.data.last_update);
         setLoading(false);
       } catch (error) {
-        console.error(error);
+        console.error('Failed to fetch data', error);
         setLoading(false);
       }
     };
@@ -33,7 +35,7 @@ export default function useApiData() {
     fetchData();
 
     if ('WebSocket' in window) {
-      ws = new WebSocket(wsUrl);
+      ws = new WebSocket(apiKey ? `${wsUrl}?apiKey=${apiKey}` : wsUrl);
       ws.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
