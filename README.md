@@ -2,6 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Air raid alerts API
+
+The application now uses the public API at [alerts.in.ua](https://alerts.in.ua) to display the
+status of air raid alerts across Ukrainian regions. Real‑time updates are received through a
+WebSocket connection. For API details see the [official documentation](https://devs.alerts.in.ua).
+
+Environment variables:
+
+- `REACT_APP_API_URL` – HTTP endpoint for initial region data
+  (default `https://alerts.in.ua/api/states`).
+- `REACT_APP_WS_URL` – WebSocket endpoint for live updates
+  (default `wss://alerts.in.ua/socket/alerts`).
+- `REACT_APP_APIKEY` – optional key sent as `X-API-Key` header and WebSocket query.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
